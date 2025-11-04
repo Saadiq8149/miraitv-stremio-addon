@@ -64,9 +64,10 @@ export async function streamHandler({ type, id }) {
     const stream = await responses.pop().json();
     var subtitles = [];
 
-    for (var track of stream["tracks"]) {
+    for (let i = 0; i < streams["tracks"].length; i++) {
+      const track = streams["tracks"][i];
       subtitles.push({
-        id: track["lablel"],
+        id: i,
         url: track["file"],
         lang: track["label"],
       });
