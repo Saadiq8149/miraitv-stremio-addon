@@ -1,0 +1,17 @@
+{
+  "name": "stremio-addon-miraitv",
+  "version": "0.0.1",
+  "description": "Quick with multiple sources, non torrent movie and tv shows streaming",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "nodemon": "^3.1.10",
+    "stremio-addon-sdk": "1.1.x"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "@types/node": "^24.10.0"
+  }
+}
