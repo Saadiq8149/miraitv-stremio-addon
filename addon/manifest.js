@@ -4,7 +4,7 @@ export const manifest = {
   name: "MiraiTV",
   description:
     "Fast streaming with multiple sources (non-torrent) for movies and TV shows",
-  logo: "./logo.png",
+  logo: "https://miraitv-stremio.ddnsfree.com/assets/logo.png",
   types: ["movie", "series"],
   resources: ["stream", "subtitles"],
   catalogs: [],
