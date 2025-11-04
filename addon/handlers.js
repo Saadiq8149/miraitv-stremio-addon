@@ -31,7 +31,6 @@ async function isRelevantResponse(response, url) {
 }
 
 export async function streamHandler({ type, id }) {
-  console.log(`Request for streams: ${type} ${id}`);
   const { context } = await initBrowser();
 
   var url;
@@ -81,11 +80,9 @@ export async function streamHandler({ type, id }) {
   }
 
   await page.close();
-  console.log(streams);
   return { streams };
 }
 
 export async function subtitlesHandler({ type, id }) {
-  console.log(`Request for subtitles: ${type} ${id}`);
   return { subtitles: [] };
 }
