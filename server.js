@@ -18,25 +18,10 @@ function startServer() {
   }
 }
 
-// Handle uncaught exceptions
-process.on("uncaughtException", (error) => {
-  console.error("Uncaught exception:", error);
-  console.log("Restarting server in 1 second...");
-  setTimeout(startServer, 1000);
-});
-
-// Handle unhandled promise rejections
-process.on("unhandledRejection", (reason, promise) => {
-  console.error("Unhandled rejection at:", promise, "reason:", reason);
-  console.log("Restarting server in 1 seconds...");
-  setTimeout(startServer, 1000);
-});
-
 process.on("SIGINT", async () => {
   console.log("Closing browser...");
   await closeBrowser();
   process.exit(0);
 });
 
-// Start the server
 startServer();
