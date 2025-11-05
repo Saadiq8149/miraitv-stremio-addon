@@ -70,7 +70,7 @@ export async function streamHandler({ type, id }) {
   });
 
   await page.goto(url);
-  await page.waitForLoadState("networkidle");
+  // await page.waitForLoadState("networkidle");
   const viewport = page.viewportSize();
   await page.mouse.click(viewport.width / 2, viewport.height / 2);
 
