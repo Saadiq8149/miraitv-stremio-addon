@@ -1,5 +1,4 @@
-import { resolveObjectURL } from "buffer";
-import { initBrowser } from "./browser.js";
+import { chromium } from "playwright";
 
 const SOURCE_BASE_URL = "https://111movies.com";
 
@@ -46,8 +45,8 @@ async function processStreamResponse(response) {
 }
 
 export async function streamHandler({ type, id }) {
-  const { context } = await initBrowser();
-
+  const browser = await chromium.launch({ headless: true });
+  const context = await browser.newContext();
   var url;
 
   if (type === "movie") {
@@ -70,7 +69,7 @@ export async function streamHandler({ type, id }) {
   });
 
   await page.goto(url);
-  // await page.waitForLoadState("networkidle");
+  await page.waitForLoadState("networkidle");
   const viewport = page.viewportSize();
   await page.mouse.click(viewport.width / 2, viewport.height / 2);
 
@@ -150,6 +149,8 @@ export async function streamHandler({ type, id }) {
   }
 
   await page.close();
+  await context.close();
+  await browser.close();
   return { streams };
 }
 
